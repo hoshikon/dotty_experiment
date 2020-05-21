@@ -1,11 +1,10 @@
+import newstuff.types._
 
 object Main {
-
   def main(args: Array[String]): Unit = {
-    println("Hello world!")
-    println(msg)
+    List(
+      Intersection,
+      Union
+    ).foreach(_.print())
   }
-
-  def msg = "I was compiled by dotty :)"
-
 }
