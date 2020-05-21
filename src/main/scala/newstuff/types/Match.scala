@@ -52,7 +52,7 @@ object Match extends  AppWithPrint("Union") {
     else nestedList(level - 1)(List(leaf))
   }
 
-  val firstLeafOfNestedList = firstLeafOf(nestedList(100)("String"))
+  val firstLeafOfNestedList = firstLeafOf(nestedList(10000)("String"))
 
   given Eql[Any, Any] = Eql.eqlAny //disable strict equality
   val canRecursivelyReduceMultipleTypesIntoASingleType =
