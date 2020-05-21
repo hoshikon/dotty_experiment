@@ -5,7 +5,8 @@ object Main {
     List(
       Intersection,
       Union,
-      TypeLambdas
+      TypeLambdas,
+      Match
     ).foreach(_.print())
   }
 }
