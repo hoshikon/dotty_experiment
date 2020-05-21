@@ -4,7 +4,8 @@ object Main {
   def main(args: Array[String]): Unit = {
     List(
       Intersection,
-      Union
+      Union,
+      TypeLambdas
     ).foreach(_.print())
   }
 }
