@@ -6,7 +6,8 @@ object Main {
       IntersectionType,
       UnionType,
       TypeLambdas,
-      MatchType
+      MatchType,
+      DependentFunctionType
     ).foreach(_.print())
   }
 }
