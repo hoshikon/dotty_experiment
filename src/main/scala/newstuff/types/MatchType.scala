@@ -5,7 +5,7 @@ import util.AppWithPrint
 import scala.Eql
 import scala.annotation.tailrec
 
-object Match extends  AppWithPrint("Union") {
+object MatchType extends  AppWithPrint("Match Type") {
 
   type Elem[T] = T match {
     case String => Char

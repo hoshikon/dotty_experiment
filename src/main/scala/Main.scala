@@ -3,10 +3,10 @@ import newstuff.types._
 object Main {
   def main(args: Array[String]): Unit = {
     List(
-      Intersection,
-      Union,
+      IntersectionType,
+      UnionType,
       TypeLambdas,
-      Match
+      MatchType
     ).foreach(_.print())
   }
 }

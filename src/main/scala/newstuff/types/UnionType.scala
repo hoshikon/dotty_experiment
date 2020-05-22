@@ -2,7 +2,7 @@ package newstuff.types
 
 import util.AppWithPrint
 
-object Union extends AppWithPrint("Union") {
+object UnionType extends AppWithPrint("Union Type") {
 
   trait A
   trait B
@@ -19,15 +19,15 @@ object Union extends AppWithPrint("Union") {
   val isAUnion =
     Either.cond(
       C.isInstanceOf[AORB],
-      "C is a union of A and B",
-      "C is NOT a union of A and B"
+      "can define a union type of two types",
+      "can NOT define a union type of two types"
     )
 
   val isCommutative =
     Either.cond(
       C.isInstanceOf[BORA],
-      "'|' is commutative",
-      "'|' is NOT commutative"
+      "is commutative",
+      "is NOT commutative"
     )
 
   override def results = List(isAUnion, isCommutative)
