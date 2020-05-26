@@ -1,3 +1,4 @@
+import newstuff.enums.Enums
 import newstuff.types._
 
 object Main {
@@ -7,7 +8,8 @@ object Main {
       UnionType,
       TypeLambdas,
       MatchType,
-      DependentFunctionType
+      DependentFunctionType,
+      Enums
     ).foreach(_.print())
   }
 }
