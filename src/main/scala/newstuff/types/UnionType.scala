@@ -1,6 +1,6 @@
 package newstuff.types
 
-import util.AppWithPrint
+import util.{AppWithPrint, Attempt}
 
 object UnionType extends AppWithPrint("Union Type") {
 
@@ -17,17 +17,15 @@ object UnionType extends AppWithPrint("Union Type") {
   }
 
   val isAUnion =
-    Either.cond(
+    Attempt(
       C.isInstanceOf[AORB],
-      "can define a union type of two types",
-      "can NOT define a union type of two types"
+      "define a union type of two types"
     )
 
   val isCommutative =
-    Either.cond(
+    Attempt(
       C.isInstanceOf[BORA],
-      "is commutative",
-      "is NOT commutative"
+      "respect commutativity law"
     )
 
   override def results = List(isAUnion, isCommutative)

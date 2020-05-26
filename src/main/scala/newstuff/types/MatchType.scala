@@ -1,6 +1,6 @@
 package newstuff.types
 
-import util.AppWithPrint
+import util.{AppWithPrint, Attempt}
 
 import scala.Eql
 import scala.annotation.tailrec
@@ -24,10 +24,9 @@ object MatchType extends  AppWithPrint("Match Type") {
   val headOfList = headOf(List(List(1), List(2), List(3)))
 
   val canReduceMultipleTypesIntoASingleType =
-    Either.cond(
+    Attempt(
       headOfString == 'S' && headOfArray == 1 && headOfList == List(1),
-      "can reduce multiple types into one type",
-      "can NOT reduce multiple types into one type"
+      "reduce multiple types into one type"
     )
 
 
@@ -56,13 +55,12 @@ object MatchType extends  AppWithPrint("Match Type") {
 
   given Eql[Any, Any] = Eql.eqlAny //disable strict equality
   val canRecursivelyReduceMultipleTypesIntoASingleType =
-    Either.cond(
+    Attempt(
       firstLeafOfNestedList == 'S',
-      "can recursively reduce multiple types into one type",
-      "can NOT recursively reduce multiple types into one type"
+      "recursively reduce multiple types into one type"
     )
 
-  override def results: List[Either[String, String]] =
+  override def results =
     List(
       canReduceMultipleTypesIntoASingleType,
       canRecursivelyReduceMultipleTypesIntoASingleType

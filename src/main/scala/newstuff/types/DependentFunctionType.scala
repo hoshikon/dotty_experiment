@@ -1,6 +1,6 @@
 package newstuff.types
 
-import util.AppWithPrint
+import util.{AppWithPrint, Attempt}
 
 object DependentFunctionType extends AppWithPrint("Dependent Function Type") {
 
@@ -10,11 +10,10 @@ object DependentFunctionType extends AppWithPrint("Dependent Function Type") {
 
   type KeyExtractor = (hk: HasKey) => hk.Key //this does not compile in scala 2
   val canDefineDependentFunctionType =
-    Either.cond(
+    Attempt(
       (extractKey _).isInstanceOf[KeyExtractor],
-      "can define a function value with dependent type",
-      "can NOT define a function value with dependent type"
+      "define a function value with dependent type"
     )
 
-  override def results: List[Either[String, String]] = List(canDefineDependentFunctionType)
+  override def results = List(canDefineDependentFunctionType)
 }

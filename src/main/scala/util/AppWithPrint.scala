@@ -1,7 +1,9 @@
 package util
 
+import scala.util.Success
+
 trait AppWithPrint(val title: String) extends App {
-  def results: List[Either[String, String]]
+  def results: List[Attempt]
 
   def print(printer: String => Unit = scala.Predef.print): Unit = {
     printer(s"[$title]\n")
@@ -9,9 +11,9 @@ trait AppWithPrint(val title: String) extends App {
     printer("\n")
   }
 
-  private def toColoredString(either: Either[String, String]): String =
-    either match {
-      case Right(str) => Console.GREEN + str + Console.RESET
-      case Left(str) => Console.RED + str + Console.RESET
+  private def toColoredString(attempt: Attempt): String =
+    attempt.result match {
+      case Success(true) => Console.GREEN + s"can ${attempt.comment}" + Console.RESET
+      case _ => Console.RED + s"failed to ${attempt.comment}" + Console.RESET
     }
 }

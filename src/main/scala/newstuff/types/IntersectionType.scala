@@ -1,6 +1,6 @@
 package newstuff.types
 
-import util.AppWithPrint
+import util.{AppWithPrint, Attempt}
 
 object IntersectionType extends AppWithPrint("Intersection Type") {
 
@@ -11,17 +11,15 @@ object IntersectionType extends AppWithPrint("Intersection Type") {
   object C extends A with B
 
   val isAnIntersection =
-    Either.cond(
+    Attempt(
       C.isInstanceOf[AANDB],
-      "can define an intersection type of two types",
-      "can NOT define an intersection type of two types"
+      "define an intersection type of two types"
     )
 
   val isCommutative =
-    Either.cond(
+    Attempt(
       C.isInstanceOf[BANDA],
-      "is commutative",
-      "is NOT commutative"
+      "respect commutativity law"
     )
 
   override def results = List(isAnIntersection, isCommutative)

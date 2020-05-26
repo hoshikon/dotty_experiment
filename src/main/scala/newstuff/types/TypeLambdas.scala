@@ -1,6 +1,6 @@
 package newstuff.types
 
-import util.AppWithPrint
+import util.{AppWithPrint, Attempt}
 
 object TypeLambdas extends AppWithPrint("Type Lambdas") {
   case class Wrapper[T](value: T)
@@ -9,11 +9,10 @@ object TypeLambdas extends AppWithPrint("Type Lambdas") {
   val wrapped = Wrapper("wrapped")
 
   val canDefineTypeLambda =
-    Either.cond(
+    Attempt(
       wrapped.isInstanceOf[WrapperLambda[String]] && wrapped.isInstanceOf[Wrapper[String]],
-      "can define type lambdas",
-      "can NOT define type lambdas"
+      "define type lambdas"
     )
 
-  override def results: List[Either[String, String]] = List(canDefineTypeLambda)
+  override def results = List(canDefineTypeLambda)
 }
