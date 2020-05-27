@@ -1,8 +1,7 @@
-package newstuff.types
+package newtypes
 
 import util.{AppWithPrint, Attempt}
 
-import scala.Eql
 import scala.annotation.tailrec
 
 object MatchType extends  AppWithPrint("Match Type") {

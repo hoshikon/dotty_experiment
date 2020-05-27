@@ -1,5 +1,5 @@
-import newstuff.enums.{Enums, EnumsADT}
-import newstuff.types._
+import enums._
+import newtypes._
 
 object Main {
   def main(args: Array[String]): Unit = {

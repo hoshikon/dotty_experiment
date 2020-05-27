@@ -1,4 +1,4 @@
-package newstuff.enums
+package enums
 
 import util.{AppWithPrint, Attempt}
 

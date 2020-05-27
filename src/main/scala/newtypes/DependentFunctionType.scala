@@ -1,4 +1,4 @@
-package newstuff.types
+package newtypes
 
 import util.{AppWithPrint, Attempt}
 
