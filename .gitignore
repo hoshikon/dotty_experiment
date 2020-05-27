@@ -1,5 +1,11 @@
 # IntelliJ
 .idea/*
 
+# vs code
+.metals
+.vscode
+.bloop
+/project/metals.sbt
+
 # sbt
 **/target/
