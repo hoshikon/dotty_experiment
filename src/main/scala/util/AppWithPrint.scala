@@ -13,7 +13,7 @@ trait AppWithPrint(val title: String) extends App {
 
   private def toColoredString(attempt: Attempt): String =
     attempt.result match {
-      case Success(true) => Console.GREEN + s"can ${attempt.comment}" + Console.RESET
+      case Success(true) => Console.GREEN + attempt.comment + Console.RESET
       case _ => Console.RED + s"failed to ${attempt.comment}" + Console.RESET
     }
 }
