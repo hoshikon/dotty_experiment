@@ -17,7 +17,9 @@ object Main {
       EnumsADT,
 
       // contextual abstractions
-      GivenInstances
+      GivenInstances,
+      UsingClauses,
+      ContextBounds
     ).foreach(_.print())
   }
 }
