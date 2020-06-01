@@ -1,5 +1,6 @@
 import enums._
 import newtypes._
+import contextualabstractions._
 
 object Main {
   def main(args: Array[String]): Unit = {
@@ -11,9 +12,12 @@ object Main {
       MatchType,
       DependentFunctionType,
 
-      //enums
+      // enums
       Enums,
-      EnumsADT
+      EnumsADT,
+
+      // contextual abstractions
+      GivenInstances
     ).foreach(_.print())
   }
 }
