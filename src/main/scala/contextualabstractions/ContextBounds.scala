@@ -1,7 +1,7 @@
 package contextualabstractions
 
 import util.{AppWithPrint, Attempt}
-import GivenInstances.Ord //I don't understand why this is working without importing given instances
+import GivenInstances.Ord
 import UsingClauses.max
 
 object ContextBounds extends AppWithPrint("Context Bounds") {
