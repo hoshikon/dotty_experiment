@@ -1,6 +1,7 @@
 import enums._
 import newtypes._
 import contextualabstractions._
+import othernew._
 
 object Main {
   def main(args: Array[String]): Unit = {
@@ -19,7 +20,10 @@ object Main {
       // contextual abstractions
       GivenInstances,
       UsingClauses,
-      ContextBounds
+      ContextBounds,
+
+      // other new features
+      TraitParameters
     ).foreach(_.print())
   }
 }
