@@ -1,7 +1,7 @@
 package contextualabstractions
 
 import util.{AppWithPrint, Attempt}
-import GivenInstances.{Ord, given _}
+import GivenInstances.{Ord, intOrd}
 
 object UsingClauses extends AppWithPrint("Using Clauses") {
   
