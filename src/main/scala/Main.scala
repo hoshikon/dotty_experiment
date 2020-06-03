@@ -23,7 +23,8 @@ object Main {
       ContextBounds,
 
       // other new features
-      TraitParameters
+      TraitParameters,
+      CreatorApplications
     ).foreach(_.print())
   }
 }
