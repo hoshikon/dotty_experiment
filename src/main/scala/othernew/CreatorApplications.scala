@@ -1,6 +1,6 @@
 package othernew
 
-import util.{AppWithPrint, Attempt}
+import util.{AppWithPrint, Fact}
 
 object CreatorApplications extends AppWithPrint("Creator Applications") {
 
@@ -16,10 +16,7 @@ object CreatorApplications extends AppWithPrint("Creator Applications") {
   // where f is interpreted as a type identifier is applicable to args => new f(args)
 
   val createAnInstanceUsingCreatorApplication =
-    Attempt(
-      kiwi.isInstanceOf[Fruit],
-      "create an instance using creator application"
-    )
+    Fact("create an instance using creator application")
 
   override val results = List(createAnInstanceUsingCreatorApplication)
 }

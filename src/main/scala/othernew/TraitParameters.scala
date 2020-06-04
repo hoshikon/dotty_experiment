@@ -1,6 +1,6 @@
 package othernew
 
-import util.{AppWithPrint, Attempt}
+import util.{AppWithPrint, Assert}
 
 object TraitParameters extends AppWithPrint("Trait Parameters") {
 
@@ -16,10 +16,10 @@ object TraitParameters extends AppWithPrint("Trait Parameters") {
   class GreetingToBob(val bobWho: String) extends Greeting(s"Bob $bobWho") with FormalGreeting
 
   val defineATraitWithParameter =
-    Attempt(
-      new GreetingToBob("Marley").msg == "How do you do, Bob Marley",
-      "define a trait with parameter"
-    )
+    Assert(
+      "define a trait with parameter",
+      new GreetingToBob("Marley").msg == "How do you do, Bob Marley"
+  )
 
   override def results = List(defineATraitWithParameter)
 }

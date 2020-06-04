@@ -10,10 +10,9 @@ object DependentFunctionType extends AppWithPrint("Dependent Function Type") {
 
   type KeyExtractor = (hk: HasKey) => hk.Key //this does not compile in scala 2
   val canDefineDependentFunctionType =
-    Attempt(
-      (extractKey _).isInstanceOf[KeyExtractor],
-      "define a function value with dependent type"
-    )
+    Attempt("define a function value with dependent type"){
+      (extractKey _).asInstanceOf[KeyExtractor]
+    }
 
   override def results = List(canDefineDependentFunctionType)
 }

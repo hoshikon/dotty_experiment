@@ -1,11 +1,9 @@
 package enums
 
-import util.{AppWithPrint, Attempt}
-
-import math.Ordered.orderingToOrdered
-import math.Ordering.Implicits.infixOrderingOps
+import util.{AppWithPrint, Assert, Attempt}
 
 object Enums extends AppWithPrint("Enums") {
+
   //this actually defines a new sealed class with 3 values Red, Green, Blue
   enum Color {
     case Red, Green, Blue
@@ -25,28 +23,25 @@ object Enums extends AppWithPrint("Enums") {
   val greenHex = ColorHex.Green
 
   val canDefineEnum =
-    Attempt(
-      blue.isInstanceOf[Color.Blue.type],
-      "define enums"
-    )
+    Attempt("define enums")(blue.asInstanceOf[Color.Blue.type])
 
   val canDefineParametrizedEnum =
-    Attempt(
-      greenHex.hex == 0x00FF00,
-      "define parametrized enum"
+    Assert(
+      "define parametrized enum",
+      greenHex.hex == 0x00FF00
     )
 
   val canCompareEnumsByOrdinal =
-    Attempt(
-      ColorJava.Red.ordinal == 0 && ColorJava.Green.compareTo(ColorJava.Blue) == -1,
-      "compare enums by ordinal"
+    Assert(
+      "compare enums by ordinal",
+      ColorJava.Red.ordinal == 0 && ColorJava.Green.compareTo(ColorJava.Blue) == -1
     )
 
   val canGetValues =
-    Attempt(
+    Assert(
+      "get values",
       Color.valueOf("Red") == Color.Red &&
-        Color.values.sameElements(Array(Color.Red, Color.Green, Color.Blue)),
-      "get values"
+        Color.values.sameElements(Array(Color.Red, Color.Green, Color.Blue))
     )
 
   override def results = List(

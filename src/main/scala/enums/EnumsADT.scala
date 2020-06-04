@@ -1,6 +1,6 @@
 package enums
 
-import util.{AppWithPrint, Attempt}
+import util.{AppWithPrint, Assert}
 
 object EnumsADT extends AppWithPrint("Enums Algebraic Data Types") {
 
@@ -22,9 +22,9 @@ object EnumsADT extends AppWithPrint("Enums Algebraic Data Types") {
   val none = Option.None
 
   val supportsADT =
-    Attempt(
-      some.isDefined && !none.isDefined,
-      "support algebraic data types"
+    Assert(
+      "support algebraic data types",
+      some.isDefined && !none.isDefined
     )
 
   override def results = List(supportsADT)

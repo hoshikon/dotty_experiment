@@ -1,6 +1,6 @@
 package newtypes
 
-import util.{AppWithPrint, Attempt}
+import util.{AppWithPrint, Assert}
 
 import scala.annotation.tailrec
 
@@ -23,9 +23,9 @@ object MatchType extends  AppWithPrint("Match Type") {
   val headOfList = headOf(List(List(1), List(2), List(3)))
 
   val canReduceMultipleTypesIntoASingleType =
-    Attempt(
-      headOfString == 'S' && headOfArray == 1 && headOfList == List(1),
-      "reduce multiple types into one type"
+    Assert(
+      "reduce multiple types into one type",
+      headOfString == 'S' && headOfArray == 1 && headOfList == List(1)
     )
 
 
@@ -54,10 +54,10 @@ object MatchType extends  AppWithPrint("Match Type") {
 
   given Eql[Any, Any] = Eql.eqlAny //disable strict equality
   val canRecursivelyReduceMultipleTypesIntoASingleType =
-    Attempt(
-      firstLeafOfNestedList == 'S',
-      "recursively reduce multiple types into one type"
-    )
+    Assert(
+      "recursively reduce multiple types into one type",
+      firstLeafOfNestedList == 'S'
+  )
 
   override def results =
     List(

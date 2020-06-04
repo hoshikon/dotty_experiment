@@ -9,10 +9,10 @@ object TypeLambdas extends AppWithPrint("Type Lambdas") {
   val wrapped = Wrapper("wrapped")
 
   val canDefineTypeLambda =
-    Attempt(
-      wrapped.isInstanceOf[WrapperLambda[String]] && wrapped.isInstanceOf[Wrapper[String]],
-      "define type lambdas"
-    )
+    Attempt("define type lambdas") {
+      wrapped.asInstanceOf[WrapperLambda[String]]
+      wrapped.asInstanceOf[Wrapper[String]]
+    }
 
   override def results = List(canDefineTypeLambda)
 }

@@ -1,10 +1,12 @@
 package contextualabstractions
 
-import util.{AppWithPrint, Attempt}
+import util.{AppWithPrint, Assert}
+
 import scala.language.implicitConversions
 import scala.concurrent.duration._
-import scala.concurrent.{ExecutionContext, Future, Await}
+import scala.concurrent.{Await, ExecutionContext, Future}
 import java.util.concurrent.ForkJoinPool
+
 import concurrent.JavaConversions.asExecutionContext
 
 object GivenInstances extends AppWithPrint("Given Instances") {
@@ -36,9 +38,9 @@ object GivenInstances extends AppWithPrint("Given Instances") {
   }
 
   val defineGivenInstance =
-    Attempt(
-      compareList(List(1,2,3), List(1,2,3,4)) == -1,
-      "define given instance"
+    Assert(
+      "define given instance",
+      compareList(List(1,2,3), List(1,2,3,4)) == -1
     )
 
     
@@ -55,18 +57,18 @@ object GivenInstances extends AppWithPrint("Given Instances") {
   }
 
   val defineAnonymousGivenInstance =
-    Attempt(
-      compareVector(Vector(1,2,3), Vector(1,2,3,4)) == -1,
-      "define given instance without a name"
+    Assert(
+      "define given instance without a name",
+      compareVector(Vector(1,2,3), Vector(1,2,3,4)) == -1
     )
 
   given global as ExecutionContext =  ExecutionContext.fromExecutorService(new ForkJoinPool())
 
   val defineAliasGivenInstance =
-    Attempt(
-      Await.result(Future.apply("hey"), 1.second) == "hey",
-      "define alias given instance"
-    )
+    Assert(
+      "define alias given instance",
+      Await.result(Future.apply("hey"), 1.second) == "hey"
+  )
 
   override def results = List(
     defineGivenInstance,
