@@ -25,7 +25,8 @@ object Main {
       // other new features
       TraitParameters,
       CreatorApplications,
-      ExportClauses
+      ExportClauses,
+      OpaqueTypeAliases
     ).foreach(_.print())
   }
 }
