@@ -30,7 +30,9 @@ object Main {
       OpenClasses,
       ParameterUntupling,
       KindPolymorphism,
-      TupledFunction
+      TupledFunction,
+      ThreadUnsafeAnnotation,
+      NewControlSyntax
     ).foreach(_.print())
   }
 }
