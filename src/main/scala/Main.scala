@@ -26,7 +26,10 @@ object Main {
       TraitParameters,
       CreatorApplications,
       ExportClauses,
-      OpaqueTypeAliases
+      OpaqueTypeAliases,
+      OpenClasses,
+      ParameterUntupling,
+      KindPolymorphism
     ).foreach(_.print())
   }
 }

@@ -14,4 +14,5 @@ case class AttemptAssert(text: String, result: Try[Boolean]) extends Comment
 object AttemptAssert {
   def apply(text: String)(result: => Boolean): AttemptAssert = AttemptAssert(text, Try(result))
 }
+case class Todo(text: String) extends Comment
 
