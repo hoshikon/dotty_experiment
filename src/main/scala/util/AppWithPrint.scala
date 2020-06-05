@@ -16,7 +16,7 @@ trait AppWithPrint(val title: String) extends App {
       case Fact(_) | Assert(_, true) | Attempt(_, Success(_)) | AttemptAssert(_, Success(true)) =>
         Console.GREEN + comment.text + Console.RESET
       case Todo(_) =>
-        Console.YELLOW + comment.text + Console.RESET
+        Console.YELLOW + s"[TODO] ${comment.text}" + Console.RESET
       case _ =>
         Console.RED + s"failed to ${comment.text}" + Console.RESET
     }
