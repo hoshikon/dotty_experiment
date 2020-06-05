@@ -24,7 +24,8 @@ object Main {
 
       // other new features
       TraitParameters,
-      CreatorApplications
+      CreatorApplications,
+      ExportClauses
     ).foreach(_.print())
   }
 }
