@@ -29,7 +29,8 @@ object Main {
       OpaqueTypeAliases,
       OpenClasses,
       ParameterUntupling,
-      KindPolymorphism
+      KindPolymorphism,
+      TupledFunction
     ).foreach(_.print())
   }
 }
