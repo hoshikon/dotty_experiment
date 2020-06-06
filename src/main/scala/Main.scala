@@ -32,7 +32,8 @@ object Main {
       KindPolymorphism,
       TupledFunction,
       ThreadUnsafeAnnotation,
-      NewControlSyntax
+      NewControlSyntax,
+      OptionalBraces
     ).foreach(_.print())
   }
 }
