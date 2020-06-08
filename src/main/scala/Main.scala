@@ -34,7 +34,8 @@ object Main {
       ThreadUnsafeAnnotation,
       NewControlSyntax,
       OptionalBraces,
-      ExplicitNulls
+      ExplicitNulls,
+      SafeInitialization
     ).foreach(_.print())
   }
 }
