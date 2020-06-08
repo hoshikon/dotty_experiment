@@ -33,7 +33,8 @@ object Main {
       TupledFunction,
       ThreadUnsafeAnnotation,
       NewControlSyntax,
-      OptionalBraces
+      OptionalBraces,
+      ExplicitNulls
     ).foreach(_.print())
   }
 }

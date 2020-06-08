@@ -6,6 +6,8 @@ lazy val root = project
 
     scalaVersion := "0.24.0-RC1",
 
+    scalacOptions ++= Seq("-Yexplicit-nulls", "-Ycheck-init"),
+
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
 
