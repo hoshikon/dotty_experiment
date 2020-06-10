@@ -59,15 +59,17 @@ object ExplicitNulls extends AppWithPrint("Explicit Nulls") {
 //Flow Typing
   val s: String | Null = ""
 
-  if (s != null) {
-    //s: String
-  } else if (s != null && s.length > 0) { // s: String in `s.length > 0`
-    //s: String | Null
+  if (s != null && s.length > 0) { // s: String in `s.length > 0`
+    // s: String
+  } else if (s != null) {
+    // s: String
+  } else if (s == null) {
+    // s: String | Null
   }
 
   s match {
-    case _: String => //s: String
-    case _ => //s: String | Null
+    case _: String => // s: String
+    case _ => // s: String | Null
   }
 
   var s2: String | Null = ""
@@ -75,8 +77,8 @@ object ExplicitNulls extends AppWithPrint("Explicit Nulls") {
     s2 = null
   }
   if (s2 != null) {
-    // f can be called here, which break the fact
-    //val a: String = s2    this will be error: x is captured and mutated by the closure, not trackable
+    // f can be called here, which breaks the fact
+    // val a: String = s2    this will be error: s2 is captured and mutated by the closure, not trackable
   }
 
   val hasFlowTyping = Fact("use flow typing")

@@ -7,7 +7,7 @@ object CreatorApplications extends AppWithPrint("Creator Applications") {
   class Fruit(name: String)
   val kiwi = Fruit("Kiwi") //no need to prepend the 'new' keyword
 
-  //the compiler adds a new possible interpretation to a functional call f(args)
+  // the compiler adds a new possible interpretation to a functional call f(args)
   // if f is a method applicable to args => f(arfs)
   // otherwise if f has an apply method applicable to args => f.apply(args)
   // otherwise if f is of the form p.m and there is an implicit conversion c applicable
