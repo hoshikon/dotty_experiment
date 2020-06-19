@@ -7,8 +7,6 @@ import scala.concurrent.duration._
 import scala.concurrent.{Await, ExecutionContext, Future}
 import java.util.concurrent.ForkJoinPool
 
-import concurrent.JavaConversions.asExecutionContext
-
 object GivenInstances extends AppWithPrint("Given Instances") {
 
   trait Ord[T] {
@@ -34,16 +32,15 @@ object GivenInstances extends AppWithPrint("Given Instances") {
   }
 
   def compareList[T](l1: List[T], l2: List[T])(using ord: Ord[List[T]]) = {
-      ord.compare(l1, l2)
+    ord.compare(l1, l2)
   }
 
-  val defineGivenInstance =
+  lazy val defineGivenInstance =
     Assert(
       "define given instance",
       compareList(List(1,2,3), List(1,2,3,4)) == -1
     )
 
-    
   given Ord[String] {
     def compare(t1: String, t2: String): Int = t1.compare(t2)
   }
@@ -53,10 +50,10 @@ object GivenInstances extends AppWithPrint("Given Instances") {
   }
 
   def compareVector[T](v1: Vector[T], v2: Vector[T])(using ord: Ord[Vector[T]]) = {
-      ord.compare(v1, v2)
+    ord.compare(v1, v2)
   }
 
-  val defineAnonymousGivenInstance =
+  lazy val defineAnonymousGivenInstance =
     Assert(
       "define given instance without a name",
       compareVector(Vector(1,2,3), Vector(1,2,3,4)) == -1
@@ -64,7 +61,7 @@ object GivenInstances extends AppWithPrint("Given Instances") {
 
   given global as ExecutionContext =  ExecutionContext.fromExecutorService(new ForkJoinPool())
 
-  val defineAliasGivenInstance =
+  lazy val defineAliasGivenInstance =
     Assert(
       "define alias given instance",
       Await.result(Future.apply("hey"), 1.second) == "hey"
