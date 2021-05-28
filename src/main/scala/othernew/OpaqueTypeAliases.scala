@@ -11,7 +11,7 @@ object OpaqueTypeAliases extends AppWithPrint("Opaque Type Aliases") {
       def apply(id: Int): Id = id
     }
 
-    extension idOps on (id: Id) {
+    extension (id: Id) {
       def *(n: Int): Int = (id.toString * n).toInt
       def asString: String = s"[id: $id]"
     }

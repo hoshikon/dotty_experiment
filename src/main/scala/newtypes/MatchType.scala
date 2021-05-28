@@ -52,7 +52,7 @@ object MatchType extends  AppWithPrint("Match Type") {
 
   val firstLeafOfNestedList = firstLeafOf(nestedList(10000)("String"))
 
-  given Eql[Any, Any] = Eql.eqlAny //disable strict equality
+  given CanEqual[Any, Any] = CanEqual.canEqualAny //disable strict equality
   val canRecursivelyReduceMultipleTypesIntoASingleType =
     Assert(
       "recursively reduce multiple types into one type",

@@ -18,10 +18,10 @@ object OptionalBraces extends AppWithPrint("Optional Braces") {
 
   type T = A
 
-  given [T] as Ord[List[T]]:
+  given [T]: Ord[List[T]] = new Ord[List[T]]:
     def compare(x: List[T], y: List[T]) = ???
 
-  extension on (xs: List[Int]):
+  extension (xs: List[Int])
     def second: Int = xs.tail.head
 
   val x =
@@ -76,7 +76,7 @@ object OptionalBraces extends AppWithPrint("Optional Braces") {
     end given
   end D
 
-  extension on (x: D):
+  extension (x: D)
     def ff: String = x.f ++ x.f
   end extension
 

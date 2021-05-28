@@ -11,16 +11,16 @@ object GivenInstances extends AppWithPrint("Given Instances") {
 
   trait Ord[T] {
     def compare(t1: T, t2: T): Int
-    def (t1: T) < (t2: T) = compare(t1, t2) < 0
-    def (t1: T) > (t2: T) = compare(t1, t2) > 0
+    def <(t1: T)(t2: T) = compare(t1, t2) < 0
+    def >(t1: T)(t2: T) = compare(t1, t2) > 0
   }
 
-  given intOrd as Ord[Int] {
+  given intOrd: Ord[Int] = new Ord[Int] {
     def compare(n1: Int, n2: Int): Int =
       if (n1 < n2) -1 else if (n1 > n2) 1 else 0
   }
 
-  given listOrd[T](using ord: Ord[T]) as Ord[List[T]] {
+  given listOrd[T](using ord: Ord[T]): Ord[List[T]] = new Ord[List[T]] {
     def compare(l1: List[T], l2: List[T]): Int = (l1, l2) match {
       case (Nil, Nil) => 0
       case (Nil, _) => -1
@@ -41,11 +41,11 @@ object GivenInstances extends AppWithPrint("Given Instances") {
       compareList(List(1,2,3), List(1,2,3,4)) == -1
     )
 
-  given Ord[String] {
+  given Ord[String] = new Ord[String] {
     def compare(t1: String, t2: String): Int = t1.compare(t2)
   }
 
-  given [T](using Ord[T]) as Ord[Vector[T]] {
+  given [T](using Ord[T]): Ord[Vector[T]] = new Ord[Vector[T]] {
     def compare(v1: Vector[T], v2: Vector[T]): Int = listOrd.compare(v1.toList, v2.toList)
   }
 
@@ -59,7 +59,7 @@ object GivenInstances extends AppWithPrint("Given Instances") {
       compareVector(Vector(1,2,3), Vector(1,2,3,4)) == -1
     )
 
-  given global as ExecutionContext =  ExecutionContext.fromExecutorService(new ForkJoinPool())
+  given global: ExecutionContext =  ExecutionContext.fromExecutorService(new ForkJoinPool())
 
   lazy val defineAliasGivenInstance =
     Assert(
