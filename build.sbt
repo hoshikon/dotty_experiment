@@ -4,7 +4,7 @@ lazy val root = project
     name := "dotty-experiment",
     version := "0.1.0",
 
-    scalaVersion := "3.0.0",
+    scalaVersion := "3.2.0",
 
     scalacOptions ++= Seq("-Yexplicit-nulls", "-Ycheck-init"),
 
